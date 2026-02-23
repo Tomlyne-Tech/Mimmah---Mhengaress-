@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>✨ MIMMAH · MY MHENGARESS · BIRTHDAY ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        /* MAIN CARD - FULLY RESPONSIVE */
+        .birthday-card {
+            max-width: 100%;
+            width: 100%;
+            background: linear-gradient(145deg, #1a1a1a 0%, #242424 100%);
+            border: 2px solid #4a4a4a;
+            border-radius: 40px 40px 30px 30px;
+            padding: 20px 15px 15px 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 2px #3a3a3a inset;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* TABLET AND UP */
+        @media (min-width: 768px) {
+            .birthday-card {
+                max-width: 1300px;
+                padding: 30px 30px 20px 30px;
+                border-radius: 60px 60px 40px 40px;
+            }
+        }
+
+        /* DECORATIVE EMOJIS - RESPONSIVE SIZING */
+        .flower-decor {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.4;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+        }
+
+        .flower-1 { top: 10px; left: 10px; animation: float 6s infinite; }
+        .flower-2 { top: 50px; right: 15px; animation: float 8s infinite reverse; }
+        .flower-3 { bottom: 80px; left: 5px; animation: float 7s infinite; }
+        .flower-4 { bottom: 20px; right: 15px; animation: float 9s infinite; }
+        .flower-5 { top: 30%; left: 5px; animation: float 5s infinite; }
+        .flower-6 { top: 60%; right: 8px; animation: float 7s infinite; }
+
+        @media (min-width: 768px) {
+            .flower-1 { top: 20px; left: 30px; }
+            .flower-2 { top: 80px; right: 50px; }
+            .flower-3 { bottom: 100px; left: 40px; }
+            .flower-4 { bottom: 40px; right: 80px; }
+            .flower-5 { top: 40%; left: 15px; }
+            .flower-6 { top: 60%; right: 20px; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+            50% { transform: translateY(-10px) rotate(5deg); opacity: 0.6; }
+        }
+
+        /* EMOJI BANNER - SCROLLABLE ON MOBILE */
+        .emoji-banner {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
+            margin: 5px 0 10px 0;
+            padding: 8px 5px;
+            background: rgba(30,30,30,0.7);
+            border-radius: 40px;
+            border: 1px solid #5a5a5a;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .emoji-banner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .emoji-banner span {
+            animation: sparkle 2s infinite;
+            display: inline-block;
+            padding: 0 2px;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); filter: drop-shadow(0 0 5px gold); }
+        }
+
+        @media (min-width: 768px) {
+            .emoji-banner {
+                gap: 15px;
+                font-size: 2.2rem;
+                padding: 10px;
+                white-space: normal;
+                overflow-x: visible;
+            }
+        }
+
+        /* PHOTO GALLERY - RESPONSIVE GRID */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0 15px 0;
+            padding: 15px;
+            background: linear-gradient(90deg, #2a2a2a, #1f1f1f);
+            border-radius: 40px 20px 40px 20px;
+            border: 2px solid #6a6a6a;
+        }
+
+        @media (min-width: 600px) {
+            .photo-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                padding: 20px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .photo-gallery {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 25px;
+            }
+        }
+
+        .photo-frame {
+            aspect-ratio: 1/1;
+            width: 100%;
+            border-radius: 30% 15% 30% 15%;
+            background: #333;
+            border: 3px solid #9a8c7e;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.03);
+            border-color: #c0b0a0;
+            box-shadow: 0 15px 30px rgba(192,176,160,0.3);
+        }
+
+        /* MAIN TITLE - FULLY RESPONSIVE */
+        .title-section {
+            text-align: center;
+            margin: 15px 0 25px 0;
+        }
+
+        .title-section h1 {
+            font-size: clamp(2.2rem, 10vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #f5e6d3, #d6cfc4, #c2b9ae);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        .title-section h2 {
+            font-size: clamp(1.5rem, 7vw, 3rem);
+            color: #e0d5c8;
+            font-weight: 400;
+            margin: 5px 0;
+        }
+
+        .birthday-badge {
+            display: inline-block;
+            background: #2c2c2c;
+            border: 2px solid #b1987e;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: clamp(1.2rem, 5vw, 2.2rem);
+            margin: 10px 0;
+            box-shadow: 0 0 20px rgba(177,152,126,0.2);
+        }
+
+        .flower-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        /* CARDS GRID - RESPONSIVE */
+        .qualities-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        @media (min-width: 500px) {
+            .qualities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .qualities-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .quality-card {
+            background: rgba(36, 36, 36, 0.9);
+            border: 2px solid #5d5d5d;
+            border-radius: 40px 15px 40px 15px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .quality-card:hover {
+            transform: translateY(-5px);
+            border-color: #b1987e;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .quality-card .emoji-big {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 10px;
+        }
+
+        .quality-card h3 {
+            font-size: clamp(1.3rem, 5vw, 2rem);
+            color: #ecd9c9;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .quality-card p {
+            color: #bdbdbd;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            line-height: 1.6;
+        }
+
+        /* CUTE THINGS SECTION */
+        .cute-section {
+            background: #222;
+            border-radius: 50px 20px 50px 20px;
+            padding: 25px 15px;
+            margin: 30px 0;
+            border: 2px solid #6d6d6d;
+        }
+
+        .cute-section h2 {
+            font-size: clamp(1.8rem, 7vw, 3rem);
+            color: #e2cfbc;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .cute-flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cute-list-styled {
+            list-style: none;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .cute-list-styled li {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #444;
+        }
+
+        .cute-list-styled li:last-child {
+            border-bottom: none;
+        }
+
+        .cute-list-styled li strong {
+            color: #f0d5b0;
+            font-weight: 600;
+        }
+
+        .cute-emoji-art {
+            font-size: clamp(3rem, 15vw, 6rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+        }
+
+        /* SLOGAN SECTION */
+        .slogan-special {
+            background: #1d1d1d;
+            border: 2px solid #8f7e6e;
+            border-radius: 80px 20px 80px 20px;
+            padding: 25px 15px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(143,126,110,0.2);
+        }
+
+        .slogan-special .main-slogan {
+            font-size: clamp(2.2rem, 9vw, 4.5rem);
+            font-weight: bold;
+            color: #f0e0d0;
+            word-break: break-word;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .slogan-subtitle {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: #c0b0a0;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* ZEAL SECTION - RESPONSIVE FLEX */
+        .zeal-section {
+            background: linear-gradient(45deg, #202020, #2a2a2a);
+            border: 2px solid #a07e5e;
+            border-radius: 50px 15px 50px 15px;
+            padding: 25px 15px;
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @media (min-width: 700px) {
+            .zeal-section {
+                flex-direction: row;
+                padding: 40px;
+            }
+        }
+
+        .zeal-left, .zeal-right {
+            flex: 1;
+        }
+
+        .zeal-left h2 {
+            font-size: clamp(1.8rem, 7vw, 3rem);
+            color: #f0cfb0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .zeal-text {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            color: #c0b0a0;
+            line-height: 1.8;
+        }
+
+        .zeal-emoji-group {
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-top: 15px;
+        }
+
+        .zeal-list-styled {
+            list-style: none;
+        }
+
+        .zeal-list-styled li {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #d0d0d0;
+            border-bottom: 1px dotted #5a5a5a;
+        }
+
+        .zeal-list-styled li:last-child {
+            border-bottom: none;
+        }
+
+        .zeal-list-styled li::before {
+            content: "🔥";
+            font-size: 1.3rem;
+        }
+
+        /* LETTER BOX */
+        .letter-box {
+            background: #252525;
+            border: 2px solid #6d6d6d;
+            border-radius: 50px 15px 50px 15px;
+            padding: 25px 15px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .letter-title {
+            font-size: clamp(1.8rem, 7vw, 2.5rem);
+            color: #e5cfbc;
+            margin-bottom: 20px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .letter-box p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            color: #dddddd;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .letter-box p strong {
+            color: #f0d0b0;
+            font-weight: 600;
+        }
+
+        .letter-box .signature {
+            font-size: clamp(1.8rem, 7vw, 2.8rem);
+            font-family: 'Brush Script MT', cursive;
+            color: #c0b0a0;
+            text-align: right;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px dashed #5a5a5a;
+        }
+
+        /* COLOR NOTE - RESPONSIVE */
+        .color-note {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background: #1e1e1e;
+            border-radius: 40px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid #4a4a4a;
+        }
+
+        @media (min-width: 600px) {
+            .color-note {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .color-swatch {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .color-dot {
+            color: #bbb;
+            font-size: 1.1rem;
+        }
+
+        .swatch {
+            width: clamp(35px, 8vw, 50px);
+            height: clamp(35px, 8vw, 50px);
+            border-radius: 50%;
+            border: 2px solid #7e7e7e;
+            transition: transform 0.3s;
+        }
+
+        .swatch:hover {
+            transform: scale(1.1);
+        }
+
+        .swatch.darkgrey { background: #2a2a2a; }
+        .swatch.grey { background: #4a4a4a; }
+        .swatch.charcoal { background: #1a1a1a; }
+
+        .color-note-text {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            color: #9e9e9e;
+        }
+
+        .color-note-text em {
+            color: #d0b8a0;
+            font-style: italic;
+        }
+
+        .color-hearts {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+        }
+
+        /* FOOTER */
+        .footer-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer-flowers {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            margin: 15px 0;
+        }
+
+        .birthday-message {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            color: #e0d0c0;
+            background: #2a2a2a;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 2px solid #b89e88;
+            text-align: center;
+            display: inline-block;
+            margin: 10px auto;
+            box-shadow: 0 0 20px rgba(184,158,136,0.2);
+        }
+
+        .footer-message {
+            margin: 20px 0;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            color: #aaa;
+        }
+
+        .footer-hearts {
+            font-size: clamp(2rem, 7vw, 3rem);
+            letter-spacing: 5px;
+        }
+
+        /* CONFETTI */
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background: #b0a090;
+            opacity: 0.3;
+            transform: rotate(45deg);
+            animation: confettiFall 10s infinite linear;
+        }
+
+        .confetti-piece:nth-child(1) { left: 10%; animation-delay: 0s; background: #c0a080; }
+        .confetti-piece:nth-child(2) { left: 30%; animation-delay: 2s; background: #808080; }
+        .confetti-piece:nth-child(3) { left: 50%; animation-delay: 4s; background: #a09080; }
+        .confetti-piece:nth-child(4) { left: 70%; animation-delay: 1s; background: #b8a898; }
+        .confetti-piece:nth-child(5) { left: 90%; animation-delay: 3s; background: #7a6a5a; }
+
+        @keyframes confettiFall {
+            0% { top: -10%; opacity: 0.5; }
+            100% { top: 110%; opacity: 0; }
+        }
+
+        /* Photo tip removed since you have actual photos */
+        .photo-tip {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="birthday-card">
+        <!-- CONFETTI -->
+        <div class="confetti">
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+        </div>
+
+        <!-- FLOATING FLOWERS -->
+        <div class="flower-decor flower-1">🌷</div>
+        <div class="flower-decor flower-2">🌹</div>
+        <div class="flower-decor flower-3">🌸</div>
+        <div class="flower-decor flower-4">🌺</div>
+        <div class="flower-decor flower-5">🌼</div>
+        <div class="flower-decor flower-6">🌻</div>
+
+        <!-- EMOJI BANNER -->
+        <div class="emoji-banner">
+            <span>🎂</span> <span>🎈</span> <span>🎉</span> <span>✨</span> <span>💖</span> <span>🌹</span> <span>🎁</span> <span>🥳</span> <span>💫</span> <span>🖤</span>
+        </div>
+
+        <!-- PHOTO GALLERY WITH YOUR ACTUAL PHOTOS -->
+        <div class="photo-gallery">
+            <!-- PHOTO 1 -->
+            <div class="photo-frame">
+                <img src="ASSETS/WhatsApp Image 2026-02-23 at 09.56.49.jpeg" alt="Mimmah - Beautiful" class="photo-img" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'emoji\'>👑</span><span class=\'compliment\'>ROYAL BEAUTY</span></div>'">
+            </div>
+            <!-- PHOTO 2 -->
+            <div class="photo-frame">
+                <img src="ASSETS/WhatsApp Image 2026-02-23 at 09.56.41.jpeg" alt="Mimmah - Glowing" class="photo-img" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'emoji\'>✨</span><span class=\'compliment\'>FLAWLESS GLOW</span></div>'">
+            </div>
+            <!-- PHOTO 3 -->
+            <div class="photo-frame">
+                <img src="ASSETS\WhatsApp Image 2026-02-23 at 09.56.49 (1).jpeg" alt="Mimmah - Graceful" class="photo-img" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'emoji\'>🌹</span><span class=\'compliment\'>TIMELESS GRACE</span></div>'">
+            </div>
+            <!-- PHOTO 4 -->
+            <div class="photo-frame">
+                <img src="ASSETS/WhatsApp Image 2026-02-23 at 09.56.42.jpeg" alt="Mimmah - Stunning" class="photo-img" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'emoji\'>🖤</span><span class=\'compliment\'>STUNNING IN GREY</span></div>'">
+            </div>
+            
+            
+        </div>
+        
+        <!-- MAIN TITLE -->
+        <div class="title-section">
+            <div class="flower-row">
+                <span>🌺</span> <span>🌹</span> <span>🌸</span> <span>🌷</span>
+            </div>
+            <h1>HAPPY BIRTHDAY</h1>
+            <h2>MIMMAH · JEMIMAH</h2>
+            <div class="birthday-badge">
+                🖤 MY MHENGARESS 🖤
+            </div>
+            <div class="flower-row">
+                <span>🌼</span> <span>🌻</span> <span>🪷</span> <span>💮</span>
+            </div>
+        </div>
+
+        <!-- QUALITIES CARDS -->
+        <div class="qualities-grid">
+            <div class="quality-card">
+                <div class="emoji-big">👑✨</div>
+                <h3>EVER GORGEOUS</h3>
+                <p>Your beauty stops hearts. That smile, those eyes — pure perfection, Mimmah.</p>
+            </div>
+            <div class="quality-card">
+                <div class="emoji-big">🌟🔥</div>
+                <h3>EVER GLOWING</h3>
+                <p>You shine from within. Your glow lights up every place you enter.</p>
+            </div>
+            <div class="quality-card">
+                <div class="emoji-big">🙏🏾💝</div>
+                <h3>A BLESSING</h3>
+                <p>A gift to everyone. Heaven sent you to us — beautiful soul.</p>
+            </div>
+            <div class="quality-card">
+                <div class="emoji-big">💎🖤</div>
+                <h3>MY FAV PERSON</h3>
+                <p>One of the people I treasure most. You're so special to me.</p>
+            </div>
+        </div>
+
+        <!-- CUTE THINGS + BEAUTY COMPLIMENTS -->
+        <div class="cute-section">
+            <h2>💝 BEAUTY & CUTENESS 💝</h2>
+            <div class="cute-flex-container">
+                <ul class="cute-list-styled">
+                    <li>🌸 <strong>Your eyes</strong> — deep, kind, sparkling</li>
+                    <li>🌼 <strong>Your smile</strong> — lights up the darkest grey</li>
+                    <li>🌺 <strong>Your skin</strong> — radiant, flawless, glowing</li>
+                    <li>🌷 <strong>Your hair</strong> — always gorgeous</li>
+                    <li>🌻 <strong>Your vibe</strong> — elegant and warm</li>
+                    <li>🪷 <strong>Your face</strong> — angelic, beauty to behold</li>
+                </ul>
+                <div class="cute-emoji-art">👸🏾✨</div>
+            </div>
+        </div>
+
+        <!-- SLOGAN -->
+        <div class="slogan-special">
+            <div class="main-slogan">#MHENGARESS</div>
+            <div class="slogan-subtitle">
+                you are just amazing to be around · our bond, our word
+            </div>
+        </div>
+
+        <!-- ZEAL OF GOD -->
+        <div class="zeal-section">
+            <div class="zeal-left">
+                <h2>🔥 THE ZEAL OF GOD 🔥</h2>
+                <p class="zeal-text">Jemimah, your faith burns bright. That fire for God, that quiet strength — it's beautiful. You carry His light and draw people closer. A rare, precious soul.</p>
+                <div class="zeal-emoji-group">🙏🏾✨🕊️</div>
+            </div>
+            <div class="zeal-right">
+                <ul class="zeal-list-styled">
+                    <li>She loves intentionally, like Him</li>
+                    <li>She reflects God's kindness daily</li>
+                    <li>She prays for those she loves</li>
+                    <li>She carries light everywhere</li>
+                    <li>Her heart seeks the Most High</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PERSONAL LETTER -->
+        <div class="letter-box">
+            <h2 class="letter-title">To my dearest mimmah,</h2>
+            <p>You're not just another person — you're my mhengaress, and that means everything. I built this with all the flowers and sparkles because that's what you deserve. You stand out in every way: gorgeous, glowing, a blessing to everyone.</p>
+            <p>I see the zeal of God in you, the kindness, the rare beauty. You make grey look like a million shades of love. I value you so much — one of my favourite people on this earth.</p>
+            <p><strong>Your beauty is breathtaking — inside and out. You're a masterpiece.</strong></p>
+            <p>Happy birthday, Jemimah. Keep being the amazing soul you are. I celebrate you today and always.</p>
+            <div class="signature">kijana Handsome 😉🖤</div>
+        </div>
+
+        <!-- HER COLORS -->
+        <div class="color-note">
+            <div class="color-swatch">
+                <span class="color-dot">her colours:</span>
+                <div class="swatch darkgrey"></div>
+                <div class="swatch grey"></div>
+                <div class="swatch charcoal"></div>
+            </div>
+            <div class="color-note-text">
+                <em>"you truly are a beauty to behold" 🌹</em>
+            </div>
+            <div class="color-hearts">🖤🩶🤍</div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer-container">
+            <div class="footer-flowers">
+                <span>🌷</span> <span>🌹</span> <span>🌸</span> <span>🌺</span> <span>🌼</span> <span>🌻</span>
+            </div>
+            <div class="birthday-message">
+                🎂 HAPPY BIRTHDAY MIMMAH! 🎂
+            </div>
+            <div class="footer-message">
+                ever gorgeous · ever glowing · a blessing to people
+            </div>
+            <div class="footer-hearts">
+                🖤🤍🩶
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log("%c🌸🌺🌼 HAPPY BIRTHDAY MIMMAH! YOU ARE BEAUTIFUL! 🌼🌺🌸", "background: #2a2a2a; color: #e5cfbc; font-size: 16px; padding: 10px; border-radius: 10px; font-weight: bold;");
+        console.log("%c👑 EVER GORGEOUS · EVER GLOWING · A BLESSING 👑", "background: #1a1a1a; color: #d6bca0; font-size: 14px; padding: 8px;");
+        
+        // Fix for any missing closing tags
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎂 Happy Birthday Mimmah! 🎂');
+        });
+    </script>
+</body>
+</html>
